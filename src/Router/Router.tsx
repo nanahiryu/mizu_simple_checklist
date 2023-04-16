@@ -7,11 +7,11 @@ import { Home } from "../components/pages/Home";
 export const Router = () => {
   return (
     <>
-      <Flex>
-        <Flex w="80px" bg="#878787">
+      <Flex h="full">
+        <Flex w="80px" h="full" bg="#878787">
           <Sidebar />
         </Flex>
-        <Flex>
+        <Flex w="calc(100% - 80px)" h="full">
           <Routes>
             <Route path="/" element={<Home />} />
           </Routes>
