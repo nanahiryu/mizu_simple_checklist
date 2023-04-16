@@ -9,20 +9,33 @@ const SidebarContainer = styled.div`
   width: 80px;
   height: 100%;
   background-color: #878787;
-  position: fixed;
+`;
+
+const MainContentsContainer = styled.div`
+  width: calc(100% - 80px);
+  height: 100%;
+  background-color: #fff;
+`;
+
+const BodyDivider = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
 `;
 
 function App() {
   return (
     <>
-      <SidebarContainer>
-        <Sidebar />
-      </SidebarContainer>
-      <div>
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </div>
+      <BodyDivider>
+        <SidebarContainer>
+          <Sidebar />
+        </SidebarContainer>
+        <MainContentsContainer>
+          <Routes>
+            <Route path="/" element={<Home />} />
+          </Routes>
+        </MainContentsContainer>
+      </BodyDivider>
     </>
   );
 }
