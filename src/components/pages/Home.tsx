@@ -45,7 +45,7 @@ const TodoListHeader = styled.div`
 
 const TodoListHeaderCheck = styled.div`
   font-size: 16pt;
-  width: 80px;
+  width: 70px;
   text-align: center;
 `;
 
@@ -62,7 +62,7 @@ const TodoListRow = styled.div`
 const TodoListRowCheck = styled.div`
   display: flex;
   justify-content: center;
-  width: 80px;
+  width: 70px;
   text-align: center;
 `;
 
