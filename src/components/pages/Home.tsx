@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import styled from "styled-components";
 
 type Item = {
@@ -104,7 +104,7 @@ export const Home = () => {
             <TodoListHeaderItem>ITEM</TodoListHeaderItem>
           </TodoListHeader>
           {todoItems.map((item) => (
-            <>
+            <Fragment key={item.id}>
               <TodoListRow>
                 <TodoListRowCheck>
                   <LargeCheckBox
@@ -115,7 +115,7 @@ export const Home = () => {
                 </TodoListRowCheck>
                 <TodoListRowItem>{item.name}</TodoListRowItem>
               </TodoListRow>
-            </>
+            </Fragment>
           ))}
         </TodoList>
       </MainContentsWrapper>
