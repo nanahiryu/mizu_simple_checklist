@@ -1,13 +1,13 @@
 import React from "react";
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
-import { Home } from "./components/pages/Home";
+import { ChakraProvider } from "@chakra-ui/react";
+import { Router } from "./Router/Router";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-    </Routes>
+    <ChakraProvider>
+      <Router />
+    </ChakraProvider>
   );
 }
 
