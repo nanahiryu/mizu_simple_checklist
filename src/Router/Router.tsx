@@ -8,7 +8,7 @@ export const Router = () => {
   return (
     <>
       <Flex h="full">
-        <Flex w="80px" h="full" bg="#878787">
+        <Flex w="80px" h="full">
           <Sidebar />
         </Flex>
         <Flex w="calc(100% - 80px)" h="full">
