@@ -1,5 +1,5 @@
 import { Flex, Input } from "@chakra-ui/react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Item } from "../../pages/Home";
 import { CrossAddButton } from "../../ui/Button/CrossAddButton";
 
@@ -13,18 +13,38 @@ export const AddItemField = (props: AddItemFieldProps) => {
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
+  const ref = useRef<HTMLInputElement>(null);
+  const rotateAddButton = (deg: number) => {
+    const button = ref.current;
+    if (button) {
+      console.log("rotate!");
+      button.style.transitionDuration = "0.2s";
+      button.style.transform = `rotate(${deg}deg)`;
+    }
+  };
+  const resetRotateAddButton = () => {
+    const button = ref.current;
+    if (button) {
+      console.log("reset!");
+      button.style.transform = "none";
+    }
+  };
   const handleAddItem = () => {
-    const newTodoItems = [
-      ...todoItems,
-      {
-        id: todoItems.length + 1,
-        name: inputValue,
-        isChecked: false,
-        isMarked: false,
-      },
-    ];
-    setTodoItems(newTodoItems);
-    setInputValue("");
+    rotateAddButton(45);
+    setTimeout(() => {
+      const newTodoItems = [
+        ...todoItems,
+        {
+          id: todoItems.length + 1,
+          name: inputValue,
+          isChecked: false,
+          isMarked: false,
+        },
+      ];
+      setTodoItems(newTodoItems);
+      setInputValue("");
+      resetRotateAddButton();
+    }, 400);
   };
   const onSubmitNewItem: React.FormEventHandler = (
     e: React.FormEvent<HTMLFormElement>
@@ -58,7 +78,7 @@ export const AddItemField = (props: AddItemFieldProps) => {
           borderRadius="none"
         />
         <Flex align="center" justify="center" pos="absolute" right="0">
-          <CrossAddButton onClick={handleAddItem} />
+          <CrossAddButton _ref={ref} onClick={handleAddItem} />
         </Flex>
       </Flex>
     </Flex>
