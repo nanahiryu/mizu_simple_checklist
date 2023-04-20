@@ -1,5 +1,7 @@
-import { Checkbox, Flex, HStack, Input, Stack, Text } from "@chakra-ui/react";
+import { Box, Flex, HStack, Stack, Text } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
+import { Checkbox } from "../ui/checkbox/Checkbox";
+import { FaRegEdit } from "react-icons/fa";
 
 type Item = {
   id: number;
@@ -20,7 +22,7 @@ const ItemDemo = [
   },
   {
     id: 3,
-    isChecked: true,
+    isChecked: false,
     name: "傘",
   },
 ];
@@ -43,39 +45,49 @@ export const Home = () => {
   }, []);
   return (
     <>
-      <Flex w="full" h="full" direction="column" p="20px">
-        <Text fontSize="20pt">TODO</Text>
-        <Stack mt="20px">
-          <HStack spacing="20px">
-            <Text w="70px" fontSize="16pt">
-              CHECK
-            </Text>
-            <Text fontSize="16pt">ITEM</Text>
-          </HStack>
-          {todoItems.map((item) => (
-            <HStack key={item.id} spacing="20px">
-              <Flex w="70px" align="center" justify="center">
-                <Checkbox
-                  size="lg"
-                  colorScheme="gray"
-                  defaultChecked={item.isChecked}
-                  checked={item.isChecked}
-                  onChange={(e) => handleCheck(e, item.id)}
-                />
-              </Flex>
-              <Flex
-                align="start"
-                w="300px"
-                py="2px"
-                pl="8px"
-                borderRadius="sm"
-                shadow="md"
-              >
-                <Text fontSize="16pt">{item.name}</Text>
-              </Flex>
-            </HStack>
-          ))}
-        </Stack>
+      <Flex w="full" h="full" p="20px" align="center" justify="center">
+        <Flex
+          w="510px"
+          h="600px"
+          bg="white"
+          direction="column"
+          align="center"
+          shadow="md"
+        >
+          <Flex
+            w="full"
+            my="40px"
+            align="center"
+            justify="center"
+            pos="relative"
+          >
+            <Text fontSize="20pt">LIST</Text>
+            <Box mr="32px" pos="absolute" right="0">
+              <FaRegEdit size={28} />
+            </Box>
+          </Flex>
+          <Stack mt="20px" spacing="20px">
+            {todoItems.map((item) => (
+              <HStack key={item.id} spacing="24px">
+                <Flex align="center" justify="center">
+                  <Checkbox
+                    checked={item.isChecked}
+                    onChange={(e) => handleCheck(e, item.id)}
+                  />
+                </Flex>
+                <Flex
+                  align="center"
+                  justify="center"
+                  w="180px"
+                  h="40px"
+                  bg={item.isChecked ? "ui.lightteal" : "ui.lightgray"}
+                >
+                  <Text fontSize="16pt">{item.name}</Text>
+                </Flex>
+              </HStack>
+            ))}
+          </Stack>
+        </Flex>
       </Flex>
     </>
   );
