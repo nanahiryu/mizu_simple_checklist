@@ -70,7 +70,6 @@ export const Home = () => {
               _hover={{
                 cursor: "pointer",
                 color: "gray.400",
-                transition: "all 0.3s",
               }}
               onClick={() => toggleMode()}
             >

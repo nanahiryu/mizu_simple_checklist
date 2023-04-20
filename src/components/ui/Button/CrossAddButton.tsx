@@ -14,7 +14,6 @@ export const CrossAddButton = (props: CrossAddButtonProps) => {
       h="32px"
       onClick={onClick}
       _hover={{ cursor: "pointer", color: "teal.400" }}
-      transition="all 0.2s"
     >
       <RxPlus size={32} />
     </Flex>

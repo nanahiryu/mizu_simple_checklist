@@ -15,7 +15,6 @@ export const CrossDeleteButton = (props: CrossDeleteButtonProps) => {
       h="32px"
       onClick={() => onClick(id)}
       _hover={{ cursor: "pointer", color: "red.400" }}
-      transition="all 0.2s"
     >
       <RxCross2 size={32} />
     </Flex>
