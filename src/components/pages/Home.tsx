@@ -68,8 +68,14 @@ export const Home = () => {
           </Flex>
           <Stack mt="20px" spacing="20px">
             {todoItems.map((item) => (
-              <HStack key={item.id} spacing="24px">
-                <Flex align="center" justify="center">
+              <Flex
+                key={item.id}
+                w="calc(180px + 2*(20px + 32px))"
+                justify="center"
+                align="center"
+                pos="relative"
+              >
+                <Flex align="center" justify="center" pos="absolute" left="0">
                   <Checkbox
                     checked={item.isChecked}
                     onChange={(e) => handleCheck(e, item.id)}
@@ -84,7 +90,7 @@ export const Home = () => {
                 >
                   <Text fontSize="16pt">{item.name}</Text>
                 </Flex>
-              </HStack>
+              </Flex>
             ))}
           </Stack>
         </Flex>
