@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Flex, Text, Icon, Image } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { FaRegEdit } from "react-icons/fa";
 import { NormalModeField } from "../features/Home/NormalModeField";
@@ -49,7 +49,15 @@ export const Home = () => {
   }, []);
   return (
     <>
-      <Flex w="full" h="full" p="20px" align="center" justify="center">
+      <Flex
+        w="full"
+        h="full"
+        align="center"
+        justify="center"
+        backgroundImage="/img/bg_wave.svg"
+        backgroundRepeat="no-repeat"
+        backgroundSize="100% auto"
+      >
         <Flex
           w="510px"
           h="600px"
