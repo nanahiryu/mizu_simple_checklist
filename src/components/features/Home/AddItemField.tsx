@@ -39,6 +39,7 @@ export const AddItemField = (props: AddItemFieldProps) => {
           name: inputValue,
           isChecked: false,
           isMarked: false,
+          isArchived: false,
         },
       ];
       setTodoItems(newTodoItems);

@@ -24,42 +24,52 @@ export const EditModeField = (props: EditModeProps) => {
   };
   const onClickDeleteButton = (id: number) => {
     // delete item
-    const newTodoItems = todoItems.filter((item) => item.id !== id);
+    const newTodoItems = todoItems.map((item) => {
+      if (item.id === id) {
+        item.isArchived = true;
+      }
+      return item;
+    });
     setTodoItems(newTodoItems);
     console.log(todoItems);
   };
   return (
     <>
       <Stack mt="20px" spacing="20px">
-        {todoItems.map((item) => (
-          <Flex
-            key={item.id}
-            w="calc(180px + 2*(20px + 32px))"
-            justify="center"
-            align="center"
-            pos="relative"
-          >
-            <Flex align="center" justify="center" pos="absolute" left="0">
-              <BookMarkButton
-                id={item.id}
-                isMarked={item.isMarked}
-                onClick={onClickBookMarkButton}
-              />
-            </Flex>
+        {todoItems
+          .filter((item) => !item.isArchived)
+          .map((item) => (
             <Flex
-              align="center"
+              key={item.id}
+              w="calc(180px + 2*(20px + 32px))"
               justify="center"
-              w="180px"
-              h="40px"
-              bg={item.isMarked ? "ui.lightteal" : "ui.lightgray"}
+              align="center"
+              pos="relative"
             >
-              <Text fontSize="16pt">{item.name}</Text>
-              <Flex align="center" justify="center" pos="absolute" right="0">
-                <CrossDeleteButton id={item.id} onClick={onClickDeleteButton} />
+              <Flex align="center" justify="center" pos="absolute" left="0">
+                <BookMarkButton
+                  id={item.id}
+                  isMarked={item.isMarked}
+                  onClick={onClickBookMarkButton}
+                />
+              </Flex>
+              <Flex
+                align="center"
+                justify="center"
+                w="180px"
+                h="40px"
+                bg={item.isMarked ? "ui.lightteal" : "ui.lightgray"}
+              >
+                <Text fontSize="16pt">{item.name}</Text>
+                <Flex align="center" justify="center" pos="absolute" right="0">
+                  <CrossDeleteButton
+                    id={item.id}
+                    onClick={onClickDeleteButton}
+                  />
+                </Flex>
               </Flex>
             </Flex>
-          </Flex>
-        ))}
+          ))}
         <AddItemField todoItems={todoItems} setTodoItems={setTodoItems} />
       </Stack>
     </>

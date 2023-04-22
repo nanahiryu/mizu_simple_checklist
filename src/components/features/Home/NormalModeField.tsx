@@ -22,31 +22,33 @@ export const NormalModeField = (props: NormalModeProps) => {
   return (
     <>
       <Stack mt="20px" spacing="20px">
-        {todoItems.map((item) => (
-          <Flex
-            key={item.id}
-            w="calc(180px + 2*(20px + 32px))"
-            justify="center"
-            align="center"
-            pos="relative"
-          >
-            <Flex align="center" justify="center" pos="absolute" left="0">
-              <Checkbox
-                checked={item.isChecked}
-                onChange={(e) => handleCheck(e, item.id)}
-              />
-            </Flex>
+        {todoItems
+          .filter((item) => !item.isArchived)
+          .map((item) => (
             <Flex
-              align="center"
+              key={item.id}
+              w="calc(180px + 2*(20px + 32px))"
               justify="center"
-              w="180px"
-              h="40px"
-              bg={item.isChecked ? "ui.lightteal" : "ui.lightgray"}
+              align="center"
+              pos="relative"
             >
-              <Text fontSize="16pt">{item.name}</Text>
+              <Flex align="center" justify="center" pos="absolute" left="0">
+                <Checkbox
+                  checked={item.isChecked}
+                  onChange={(e) => handleCheck(e, item.id)}
+                />
+              </Flex>
+              <Flex
+                align="center"
+                justify="center"
+                w="180px"
+                h="40px"
+                bg={item.isChecked ? "ui.lightteal" : "ui.lightgray"}
+              >
+                <Text fontSize="16pt">{item.name}</Text>
+              </Flex>
             </Flex>
-          </Flex>
-        ))}
+          ))}
       </Stack>
     </>
   );

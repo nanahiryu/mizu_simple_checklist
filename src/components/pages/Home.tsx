@@ -8,6 +8,7 @@ export type Item = {
   id: number;
   isChecked: boolean;
   isMarked: boolean;
+  isArchived: boolean;
   name: string;
 };
 
@@ -16,18 +17,21 @@ const ItemDemo = [
     id: 1,
     isChecked: false,
     isMarked: true,
+    isArchived: false,
     name: "服",
   },
   {
     id: 2,
     isChecked: false,
     isMarked: false,
+    isArchived: false,
     name: "スマホ",
   },
   {
     id: 3,
     isChecked: false,
     isMarked: false,
+    isArchived: false,
     name: "傘",
   },
 ];
