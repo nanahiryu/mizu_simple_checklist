@@ -1,4 +1,4 @@
-import { Box, Flex, Text, Icon, Image } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { FaRegEdit } from "react-icons/fa";
 import { NormalModeField } from "../features/Home/NormalModeField";
